@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,4 +22,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('admin-panel','Posts');
+//
+//Route::get('/post/comments', 'PostController@comments')->name('post_comments');
+
+Route::resource('admin-panel','AdminPostController');
+Route::resource('post','PostController');
+

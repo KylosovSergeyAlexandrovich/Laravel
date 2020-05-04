@@ -10,11 +10,12 @@
 
 <div class="container">
     <div class="row">
-        @if(Route::currentRouteAction() ==  'App\Http\Controllers\AdminPostController@index')
+
+        @if(Route::currentRouteAction() ==  'App\Http\Controllers\PostController@index')
             @foreach ($posts as $post)
                 <h2>Заголовок заявки - {{ $post->title  }}</h2>
                 <h3 >Текст - {{ $post->content  }}</h3>
-                <h4>{{ $post->user_id  }}</h4>
+                {{--<h4>{{ $post->user_id  }}</h4>--}}
 
                 @if($post->view_post !== 1)
                     <p>Заявка не просмотренна</p>
@@ -34,7 +35,7 @@
                     <p>Вам ответили <strong>{{ $post->quantity_responses }}</strong> раз</p>
                 @endif
                 <h1>{{ $post->created_at }}</h1>
-                <a href="/admin-panel/{{ $post->id  }}">подробнее</a>
+                <a href="/post/{{ $post->id  }}">подробнее</a>
                 <hr>
             @endforeach
         @endif

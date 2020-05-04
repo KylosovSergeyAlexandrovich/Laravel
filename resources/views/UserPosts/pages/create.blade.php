@@ -1,11 +1,10 @@
-@extends('admin.admin-index')
+@extends('UserPosts.user-index')
 
 @section('title', 'Добавить заявку')
 
 
 @section('content')
-    Привет Админ  работает admin-panel/create!
-    {!! Form::open(['route' => 'admin-panel.store']) !!}
+    {!! Form::open(['route' => 'post.store']) !!}
 
         <div class="form-group">
             <div class="col-md-3">

@@ -22,14 +22,14 @@ class CreatePostsTable extends Migration
             /* чья заявка */
             $table->integer('user_id');
 
-            /* просмотрена заявка или нет */
-            $table->text('view_post');
+            /* просмотрена заявка или нет  где 0 = нет 1=да */
+            $table->integer('view_post')->default('0');
 
-            /* закрыла или открыта заявка */
-            $table->text('state_post');
+            /* закрыла или открыта заявка где 0 = открыта 1=закрыта*/
+            $table->integer('state_post')->default('0');
 
             /* колличество ответов */
-            $table->integer('quantity_responses');
+            $table->integer('quantity_responses')->default('0');
 
             /* тело заявки */
             $table->string('content');
