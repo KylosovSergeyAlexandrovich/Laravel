@@ -111,6 +111,18 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
+        $AdminClosure = Auth::user()->role;
+        if ($AdminClosure !== 'manager'){
+            return redirect('/home');
+        }
+
+
+        $post = \App\Posts::find($id);
+        $post->state_post = 1;
+        $post->save();
+
+        return redirect()->route('post.show', $post->id);
+
     }
     /**
      * Update the specified resource in storage.

@@ -62,39 +62,33 @@ class PostController extends Controller
 
         $request->session()->flash('success', 'Ваша заявка успешно отправленна!');
 
-
         return redirect()->route('post.show', $post->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-
         $post = Posts::find($id);
-
         if (Auth::id() !== $post->user_id) {
             return redirect('/home');
         }
-
 
         return view('UserPosts.pages.show')->withPost($post);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     *    closes the application
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        $post = \App\Posts::find($id);
+        $post->state_post = 1;
+        $post->save();
 
-        return "asdasdasd";
+        return redirect()->route('post.show', $post->id);
     }
     /**
      * Update the specified resource in storage.
@@ -115,7 +109,7 @@ class PostController extends Controller
     public function destroy($id)
     {
 
-        
+
     }
 
 
